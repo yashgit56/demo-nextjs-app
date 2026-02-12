@@ -2,11 +2,21 @@ import type { Product } from "@/types/product";
 import { notFound } from "next/navigation";
 
 export async function getProducts() {
-  const res = await fetch("https://fakestoreapi.com/products");
+  try {
+    const res = await fetch("https://fakestoreapi.com/products", {
+      next: { revalidate: 120 },
+    });
 
-  if (!res.ok) throw new Error("Failed to load products");
+    if (!res.ok) {
+      console.error("API failed:", res.status);
+      return [];
+    }
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return [];
+  }
 }
 
 export async function getProduct(id: string): Promise<Product> {
