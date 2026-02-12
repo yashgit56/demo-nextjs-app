@@ -3,18 +3,7 @@ import { notFound } from "next/navigation";
 import { Product } from "@/types/product";
 import Image from "next/image";
 import AddToCartButton from "@/app/components/AddToCartButton";
-
-async function getProduct(id: string): Promise<Product> {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    notFound();
-  }
-
-  return res.json();
-}
+import { getProduct } from "@/app/lib/products";
 
 export default async function ProductPage({
   params,
