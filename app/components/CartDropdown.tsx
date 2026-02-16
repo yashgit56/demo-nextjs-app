@@ -6,6 +6,7 @@ import { CartItem } from "@/types/cart";
 import { useCart } from "@/context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import CartDropdownItemCard from "./CartDropdownItemCard";
 
 <FontAwesomeIcon icon={faShoppingCart} className="text-xl" />;
 
@@ -64,38 +65,16 @@ export default function CartDropdown({
             <div className="absolute -top-2 right-6 w-4 h-4 bg-white border-l border-t rotate-45"></div>
           )}
           {items.length === 0 ? (
-            <p className="p-4 text-gray-500 text-sm">Your cart is empty</p>
+            <p className="p-4 text-gray-500 text-sm">
+              Your cart is empty
+            </p>
           ) : (
             <>
               <h4 className="text-center font-semibold p-2"> My Cart </h4>
               <hr />
               <ul className="max-h-64 overflow-auto divide-y">
                 {items.map((item) => (
-                  <li key={item.id} className="p-4 flex justify-between">
-                    <div className="flex flex-col justify-center gap-2 max-w-37.5">
-                      <p className="font-medium truncate">{item.title}</p>
-                      <div className="flex items-center justify-center border rounded max-w-25">
-                        <button
-                          onClick={() => decrementQuantity(item.id)}
-                          className="px-3 py-1 text-sm"
-                        >
-                          −
-                        </button>
-
-                        <span className="px-3">{item.quantity}</span>
-
-                        <button
-                          onClick={() => incrementQuantity(item.id)}
-                          className="px-3 py-1 text-sm"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <p className="font-semibold">
-                      ₹{(item.price * item.quantity).toFixed(2)}
-                    </p>
-                  </li>
+                  <CartDropdownItemCard key={item.id} item={item} />
                 ))}
               </ul>
 

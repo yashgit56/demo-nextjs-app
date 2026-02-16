@@ -5,17 +5,14 @@ import { useRouter } from "next/navigation";
 import CartItemCard from "../components/CartItemCard";
 
 export default function Cart() {
-  const {
-    cartItems,
-    clearCart,
-  } = useCart();
+  const { cartItems, clearCart } = useCart();
   const router = useRouter();
 
   if (cartItems.length === 0) {
     return (
-      <div className="p-6">
-        <h2 className="text-xl font-semibold">Your Cart</h2>
-        <p className="mt-4 text-gray-500">Your cart is empty 🛒</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <h2 className="text-xl font-semibold">My Cart</h2>
+        <p className="mt-4 text-gray-500"> No Items added yet in cart 🛒</p>
       </div>
     );
   }
@@ -48,7 +45,7 @@ export default function Cart() {
           Continue to Billing
         </button>
         <button
-          onClick={() => clearCart}
+          onClick={() => clearCart()}
           className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
         >
           Clear Cart

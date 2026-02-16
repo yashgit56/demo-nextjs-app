@@ -47,18 +47,20 @@ export default function CartItemCard({
           </div>
         )}
 
-        {/* Item Total */}
-        <span className="font-semibold">
-          ₹{(item.price * item.quantity).toFixed(2)}
-        </span>
+        <div className="flex flex-col items-center justify-evenly">
+          {/* Item Total */}
+          <span className="font-semibold">
+            ₹{(item.price * item.quantity).toFixed(2)}
+          </span>
 
-        {/* Remove */}
-        <button
-          onClick={() => removeFromCart(item.id)}
-          className="text-red-500 text-sm"
-        >
-          Remove
-        </button>
+          {/* Remove */}
+          <button
+            onClick={() => removeFromCart(item.id)}
+            className="text-red-500 text-sm"
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );
