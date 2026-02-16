@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Product } from "@/types/product";
+import { productsResponse } from "@/app/lib/data";
 
 export async function GET(
   _req: Request,
@@ -8,12 +9,8 @@ export async function GET(
   const { product } = await params;
   const productId = Number(product);
 
-  const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-
-  if (!res.ok) {
-    return NextResponse.json({ message: "Product not found" }, { status: 404 });
-  }
-
-  const receivedProduct: Product = await res.json();
+  const receivedProduct = productsResponse.find(
+    (product) => product.id === productId,
+  );
   return NextResponse.json(receivedProduct);
 }
