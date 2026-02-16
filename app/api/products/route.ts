@@ -4,6 +4,7 @@ import { productsResponse } from "@/app/lib/data";
 
 export async function GET() {
   try {
+    console.log("products response api is called");
     return NextResponse.json(productsResponse);
   } catch (error) {
     return NextResponse.json(

@@ -3,9 +3,12 @@ import { notFound } from "next/navigation";
 
 export async function getProducts() {
   try {
-    const res = await fetch("https://fakestoreapi.com/products", {
-      next: { revalidate: 120 },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/products`,
+      {
+        next: { revalidate: 120 },
+      },
+    );
 
     if (!res.ok) {
       console.error("API failed:", res.status);

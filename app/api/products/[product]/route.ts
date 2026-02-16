@@ -9,6 +9,7 @@ export async function GET(
   const { product } = await params;
   const productId = Number(product);
 
+  console.log("single product response api is called");
   const receivedProduct = productsResponse.find(
     (product) => product.id === productId,
   );

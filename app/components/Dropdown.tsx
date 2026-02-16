@@ -18,7 +18,9 @@ export default function Dropdown({ value, onChange, options }: DropdownProps) {
         className="appearance-none w-full bg-white/70 backdrop-blur-md border border-gray-200 text-gray-700 rounded-xl px-4 py-3 pr-10 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 cursor-pointer"
       >
         {options.map((option: Option) => (
-          <option value={option.value}>{option.label}</option>
+          <option key={option.label} value={option.value}>
+            {option.label}
+          </option>
         ))}
       </select>
 

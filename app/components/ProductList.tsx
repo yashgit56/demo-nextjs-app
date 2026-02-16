@@ -66,7 +66,7 @@ export default function ProductList({ products }: { products: Product[] }) {
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 p-2">
         {displayProducts.map((product: Product) => (
-          <ProductCard product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </ul>
     </>
